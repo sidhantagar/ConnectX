@@ -1,3 +1,7 @@
+#All Credits for the following piece of code goes to Glenn Mackintosh 
+#The following code has been shared by him on the stackoverflow thread "https://stackoverflow.com/questions/61523241/pygame-button-with-rounded-corners-border-radius-argument-does-not-work"
+#Thanks to Glenn Mackintosh for sharing this code snippet
+
 import pygame
 import pygame.gfxdraw
 

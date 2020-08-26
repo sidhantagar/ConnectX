@@ -5,12 +5,12 @@ from new_game import*
 from draw_text import *
 from draw_buttons import *
 
-
 #Initial values
 player_number = 1
 
 
 def mainMenu(font, screen):
+    from edit_configuration import editConfig
     #Creating New Game Button
     screen.fill((0,0,0))
     draw_bordered_rounded_rect (screen, (100,200,200,70),(0,0,255),(255,255,0),10,5)
@@ -35,7 +35,7 @@ def mainMenu(font, screen):
                     if ret== 0: 
                         return
                 elif mouse_pos_x > 99 and mouse_pos_x <301 and mouse_pos_y > 299 and mouse_pos_y <371:
-                    print("Button 2 clicked!")
+                    editConfig(screen, font, player_number)
 
 def newGameMenu(screen,font):
     draw_bordered_rounded_rect (screen, (70,145,260,280),(0,0,255),(255,255,0),10,5)
@@ -67,14 +67,13 @@ def newGameMenu(screen,font):
                     ret = newGame(1,3)
                 elif mouse_pos_x > 309 and mouse_pos_x < 346 and mouse_pos_y > 129 and mouse_pos_y < 166:
                     mainMenu(font, screen)
-
             if ret == 0: 
                 return 0
     
 
-
-pygame.init()
-pygame.font.init()
-font = pygame.font.SysFont('comicsans',30)
-screen = pygame.display.set_mode((400,500),0,0)
-mainMenu(font,screen)
+if __name__ == "__main__":
+    pygame.init()
+    pygame.font.init()
+    font = pygame.font.SysFont('comicsans',30)
+    screen = pygame.display.set_mode((400,500),0,0)
+    mainMenu(font,screen)
