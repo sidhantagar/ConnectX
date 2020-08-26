@@ -1,5 +1,13 @@
-import numpy as np    
+"""
+Copyright 2020, Sidhant Agarwal, sidhant11136@gmail.com, All rights reserved.
+
+Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
+
+"""
+
+import time
 import pygame
+import numpy as np    
 
 def create_board(config):
     #Initialising board array
@@ -7,8 +15,8 @@ def create_board(config):
     #Initialising board graphic
     game_screen = pygame.display.set_mode((1200,800),0,0)
     game_screen.fill((0,0,50))
-    for i in range (config.rows):
-        for j in range (config.columns):
+    for i in range (config.columns):
+        for j in range (config.rows):
             x = config.startx + ((2*i+1)*config.square_size)//2
             y = config.starty + ((2*j+1)*config.square_size)//2
             pygame.draw.circle(game_screen,(150,150,200),(x,y),config.square_size//2-5)
@@ -32,12 +40,51 @@ def drop_piece(config, board, col, mark, game_screen):
     #Updating the board
     next_board[row][col] = mark
     #Updating the board graphic
-    x = config.startx + ((2*col+1)*square_size)//2
-    y = config.starty + ((2*row+1)*square_size)//2
+    
     if mark == 1:
-        pygame.draw.circle(game_screen,(255,0,0),(x,y),square_size//2-7)
+        for i in range(row+1):
+            x = config.startx + ((2*col+1)*square_size)//2
+            if i==0:
+                y = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(255,0,0),(x,y),square_size//2-7)
+            elif i==1:
+                y1 = config.starty + ((2*(i-1)+1)*square_size)//2
+                y2 = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(150,0,0),(x,y1),square_size//2-7)
+                pygame.draw.circle(game_screen,(255,0,0),(x,y2),square_size//2-7)
+            else:
+                y1 = config.starty + ((2*(i-2)+1)*square_size)//2
+                y2 = config.starty + ((2*(i-1)+1)*square_size)//2
+                y3 = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(0,0,0),(x,y1),square_size//2-7)
+                pygame.draw.circle(game_screen,(150,0,0),(x,y2),square_size//2-7)
+                pygame.draw.circle(game_screen,(255,0,0),(x,y3),square_size//2-7) 
+            pygame.display.update()
+            time.sleep(0.1)        
+        y = config.starty + ((2*(i-1)+1)*square_size)//2
+        pygame.draw.circle(game_screen,(0,0,0),(x,y),square_size//2-7)
     else:
-        pygame.draw.circle(game_screen,(0,255,0),(x,y),square_size//2-7)
+        for i in range (row+1):
+            x = config.startx + ((2*col+1)*square_size)//2
+            if i==0:
+                y = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(0,255,0),(x,y),square_size//2-7)
+            elif i==1:
+                y1 = config.starty + ((2*(i-1)+1)*square_size)//2
+                y2 = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(0,150,0),(x,y1),square_size//2-7)
+                pygame.draw.circle(game_screen,(0,255,0),(x,y2),square_size//2-7)
+            else:
+                y1 = config.starty + ((2*(i-2)+1)*square_size)//2
+                y2 = config.starty + ((2*(i-1)+1)*square_size)//2
+                y3 = config.starty + ((2*i+1)*square_size)//2
+                pygame.draw.circle(game_screen,(0,0,0),(x,y1),square_size//2-7)
+                pygame.draw.circle(game_screen,(0,150,0),(x,y2),square_size//2-7)
+                pygame.draw.circle(game_screen,(0,255,0),(x,y3),square_size//2-7) 
+            pygame.display.update()
+            time.sleep(0.1)        
+        y = config.starty + ((2*(i-1)+1)*square_size)//2
+        pygame.draw.circle(game_screen,(0,0,0),(x,y),square_size//2-7)
     return next_board,game_screen
 
 def count_windows(grid, num_discs, piece, config,ret=False):
