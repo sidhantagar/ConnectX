@@ -1,7 +1,14 @@
+"""
+Copyright 2020, Sidhant Agarwal, sidhant11136@gmail.com, All rights reserved.
+
+Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
+
+"""
+
 #Mode1: player vs AI
 #Mode2: player vs player
 #Mode3: AI vs AI
-
+import time
 import pygame
 import numpy as np
 import pandas as pd
@@ -39,20 +46,15 @@ def newGame(player_number,player_mode):
     config = Dictionary1(rows,columns,inarow,square_size,startx,starty)
     ret = 1
     if player_mode == 1:
-        ret = playervsAI(config)
-        if ret == 0:
-            return 0
+        playervsAI(config)
     if player_mode == 2:
-        ret = playervsPlayer(config)
-        if ret == 0:
-            return 0
+        playervsPlayer(config)
     if player_mode == 3:
-        ret = AIvsAI(config)
-        if ret == 0:
-            return 0
+        AIvsAI(config)
 
 
 def playervsAI(config):
+    from Main_Menu import mainMenu
     player = np.random.randint(1,3)
     game_screen, board = create_board(config)
     current = Dictionary2(board,2)
@@ -62,8 +64,8 @@ def playervsAI(config):
         if player == 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.display.quit()
-                    return 0
+                    game_over = True
+                    break
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     player_move = get_column(config,event.pos)
                     if player_move == None or is_valid(board,player_move)== False:
@@ -74,7 +76,7 @@ def playervsAI(config):
                         if (connected>=1):
                             draw_line(config,p1,p2,player,game_screen)
                             pygame.display.update()
-                            print ("Player " + str(player)+"Won!!")
+                            print ("Player Won!!")
                             game_over = True
                         player = 2
         else:
@@ -95,10 +97,14 @@ def playervsAI(config):
             game_over = True
         pygame.display.update()
     if game_over == True:
+        time.sleep(4)
         pygame.display.quit()
-        return 0
+        mainMenu(None, None)
+        
 
 def playervsPlayer(config):
+    from Main_Menu import mainMenu
+    
     player = np.random.randint(1,3)
     game_screen, board = create_board(config)
     
@@ -107,8 +113,8 @@ def playervsPlayer(config):
         if player == 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.display.quit()
-                    return 0
+                    game_over = True
+                    break
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     player_move = get_column(config,event.pos)
                     if player_move == None or is_valid(board,player_move)== False:
@@ -137,7 +143,7 @@ def playervsPlayer(config):
                         if (connected>=1):
                             draw_line(config,p1,p2,player,game_screen)
                             pygame.display.update()
-                            print ("Player " + str(player)+"Won!!")
+                            print ("Player " + str(player)+" Won!!")
                             game_over = True
                         player = 1
         pygame.display.update()
@@ -145,9 +151,11 @@ def playervsPlayer(config):
             game_over = True
         pygame.display.update()
     if game_over == True:
+        time.sleep(4)
         pygame.display.quit()
-        return 0
+        mainMenu(None, None)
 def AIvsAI(config):
+    from Main_Menu import mainMenu
     player = np.random.randint(1,3)
     game_screen, board = create_board(config)
     current = Dictionary2(board,2)
@@ -186,6 +194,7 @@ def AIvsAI(config):
             game_over = True
         pygame.display.update()
     if game_over == True:
+        time.sleep(4)
         pygame.display.quit()
-        return 0
+        mainMenu(None, None)
 #newGame(1,1)

@@ -1,3 +1,10 @@
+"""
+Copyright 2020, Sidhant Agarwal, sidhant11136@gmail.com, All rights reserved.
+
+Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
+
+"""
+
 import pandas as pd
 from draw_text import *
 from draw_buttons import *

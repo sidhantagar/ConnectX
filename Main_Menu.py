@@ -1,3 +1,9 @@
+"""
+Copyright 2020, Sidhant Agarwal, sidhant11136@gmail.com, All rights reserved.
+
+Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
+
+"""
 import os
 import time
 import pygame
@@ -10,6 +16,10 @@ player_number = 1
 
 
 def mainMenu(font, screen):
+    if font == None:
+        font = pygame.font.SysFont("comicsans",30)
+    if screen == None:
+        screen = pygame.display.set_mode((400,500),0,0)
     from edit_configuration import editConfig
     #Creating New Game Button
     screen.fill((0,0,0))

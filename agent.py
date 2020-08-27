@@ -1,3 +1,10 @@
+"""
+Copyright 2020, Sidhant Agarwal, sidhant11136@gmail.com, All rights reserved.
+
+Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
+
+"""
+
 import numpy as np
 import random
 def score_move_a(grid, col, mark, config,n_steps=1):
@@ -40,12 +47,12 @@ def get_heuristic(grid, mark, config):
     score = 0
     for i in range(config.inarow):
         num  = count_windows (grid,i+1,mark,config)
-        if (i==3 and num >= 1):
+        if (i==(config.inarow-1) and num >= 1):
             return float("inf")
         score += (4**(i))*num
     for i in range(config.inarow):
         num_opp = count_windows (grid,i+1,mark%2+1,config)
-        if (i==3 and num_opp >= 1):
+        if (i==(config.inarow-1) and num_opp >= 1):
             return float ("-inf")
         score-= (2**((2*i)+1))*num_opp
     return score
