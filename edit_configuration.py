@@ -58,18 +58,30 @@ def editConfig(screen, font, player_number, color = (255,255,0)):
                     if state == 1:
                         rows = rows_input.get_text()
                         config['Rows'][player_number-1] = int(rows)
+                        if config['Rows'][player_number-1] >20:
+                            config['Rows'][player_number-1] = 20
+                        if config['Rows'][player_number-1] < 3:
+                            config['Rows'][player_number-1] = 3
                         draw_bordered_rounded_rect(screen, (240,193,45,30),(255,0,0),(255,255,0),5,2)
                         draw_text(font,screen,str(config['Rows'][player_number-1]),(255,255,0),262,208)
                         rows_input = TextInput(initial_string = str(config['Rows'][player_number-1]))
                     elif state == 2:
                         columns = columns_input.get_text()
                         config['Columns'][player_number-1] = int(columns)
+                        if config['Columns'][player_number-1] > 20:
+                            config['Columns'][player_number-1] = 20
+                        if config['Columns'][player_number-1] < 3:
+                            config['Columns'][player_number-1] = 3
                         draw_bordered_rounded_rect(screen, (240,268,45,30),(255,0,0),(255,255,0),5,2)
                         draw_text(font,screen,str(config['Columns'][player_number-1]),(255,255,0),262,283)
                         columns_input = TextInput(initial_string = str(config['Columns'][player_number-1]))
                     elif state == 3:
                         inarow = inarow_input.get_text()
                         config['Inarow'][player_number-1] = int (inarow)
+                        if config['Inarow'][player_number-1] <3:
+                            config['Inarow'][player_number-1] = 3 
+                        if config['Inarow'][player_number-1] >20:
+                            config['Inarow'][player_number-1] = 20
                         draw_bordered_rounded_rect(screen, (240,343,45,30),(255,0,0),(255,255,0),5,2)
                         draw_text(font,screen,str(config['Inarow'][player_number-1]),(255,255,0),262,358)
                         inarow_input = TextInput(initial_string = str(config['Inarow'][player_number-1]))
@@ -105,7 +117,7 @@ def editConfig(screen, font, player_number, color = (255,255,0)):
                     state = 2
                 elif mouse_pos_x > 239 and mouse_pos_x < 286 and mouse_pos_y > 342 and mouse_pos_y < 374:
                     state = 3
-                elif mouse_pos_x > 309 and mouse_pos_x < 346 and mouse_pos_y > 129 and mouse_pos_y < 166:
+                elif mouse_pos_x > 309 and mousepos_x < 346 and mouse_pos_y > 129 and mouse_pos_y < 166:
                     mainMenu(font, screen)
                 
         #Rows

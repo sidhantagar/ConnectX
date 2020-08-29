@@ -197,4 +197,7 @@ def AIvsAI(config):
         time.sleep(4)
         pygame.display.quit()
         mainMenu(None, None)
-#newGame(1,1)
+if __name__ == '__main__':
+    pygame.init()
+    pygame.font.init()
+    newGame(1,1)

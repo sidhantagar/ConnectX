@@ -60,7 +60,7 @@ def drop_piece(config, board, col, mark, game_screen):
                 pygame.draw.circle(game_screen,(150,0,0),(x,y2),square_size//2-7)
                 pygame.draw.circle(game_screen,(255,0,0),(x,y3),square_size//2-7) 
             pygame.display.update()
-            time.sleep(0.1)        
+            time.sleep(0.05)        
         y = config.starty + ((2*(i-1)+1)*square_size)//2
         pygame.draw.circle(game_screen,(0,0,0),(x,y),square_size//2-7)
     else:
@@ -82,7 +82,7 @@ def drop_piece(config, board, col, mark, game_screen):
                 pygame.draw.circle(game_screen,(0,150,0),(x,y2),square_size//2-7)
                 pygame.draw.circle(game_screen,(0,255,0),(x,y3),square_size//2-7) 
             pygame.display.update()
-            time.sleep(0.1)        
+            time.sleep(0.05)        
         y = config.starty + ((2*(i-1)+1)*square_size)//2
         pygame.draw.circle(game_screen,(0,0,0),(x,y),square_size//2-7)
     return next_board,game_screen
