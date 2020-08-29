@@ -7,6 +7,7 @@ Borrowed from https://github.com/sidhantagar/ConnectX under the MIT license.
 
 import numpy as np
 import random
+max_score = None
 def score_move_a(grid, col, mark, config,n_steps=1):
     global max_score
     next_grid = drop_piece(grid, col, mark, config)
