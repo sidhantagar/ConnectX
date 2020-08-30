@@ -117,7 +117,7 @@ def editConfig(screen, font, player_number, color = (255,255,0)):
                     state = 2
                 elif mouse_pos_x > 239 and mouse_pos_x < 286 and mouse_pos_y > 342 and mouse_pos_y < 374:
                     state = 3
-                elif mouse_pos_x > 309 and mousepos_x < 346 and mouse_pos_y > 129 and mouse_pos_y < 166:
+                elif mouse_pos_x > 309 and mouse_pos_x < 346 and mouse_pos_y > 129 and mouse_pos_y < 166:
                     mainMenu(font, screen)
                 
         #Rows

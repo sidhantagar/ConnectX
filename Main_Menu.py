@@ -20,9 +20,15 @@ def mainMenu(font, screen):
         font = pygame.font.SysFont("comicsans",30)
     if screen == None:
         screen = pygame.display.set_mode((400,500),0,0)
+    image = pygame.image.load('Group_1.jpg')
+    dummy = pygame.Surface((1280,1600))
+    background = pygame.Surface((400,500))
+    dummy.blit(image,(0,0))
+    pygame.transform.scale(dummy,(400,500),background)
+        
     from edit_configuration import editConfig
     #Creating New Game Button
-    screen.fill((0,0,0))
+    screen.blit(background,(0,0))
     draw_bordered_rounded_rect (screen, (100,200,200,70),(0,0,255),(255,255,0),10,5)
     screen = draw_text (font, screen, "New Game", (255,255,255), 200, 235)
 
