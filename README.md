@@ -14,3 +14,5 @@ The game has 3 different modes of Player vs Player, Player vs AI and AI vs AI.
 3. Download and extract all the files in this repository.
 
 4. Run Main_Menu.py
+
+P.S: Running the game for the first time may take pygame considerably more time to load the interface.
