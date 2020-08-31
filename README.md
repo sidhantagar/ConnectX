@@ -4,3 +4,13 @@ This project in reinforcement learning has been inspired from the game of connec
 In the project the dimensions of the game board can be varied from 0-20. An AI agent has been created using minimax to play the game.
 
 The game has 3 different modes of Player vs Player, Player vs AI and AI vs AI.
+
+## How to run the game:
+
+1. Install python on your PC.
+
+2. Use pip to install numpy pandas and pygame libraries.
+
+3. Download and extract all the files in this repository.
+
+4. Run Main_Menu.py
