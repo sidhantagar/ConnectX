@@ -53,47 +53,55 @@ def drop_piece(grid, col, mark, config):
 
 def get_heuristic(grid, mark, config):
     score = 0
+    num = count_windows(grid,mark,config)
     for i in range(config.inarow):
-        num  = count_windows (grid,i+1,mark,config)
-        if (i==(config.inarow-1) and num >= 1):
+        #num  = count_windows (grid,i+1,mark,config)
+        if (i==(config.inarow-1) and num[i+1] >= 1):
             return float("inf")
-        score += (4**(i))*num
+        score += (4**(i))*num[i+1]
+    num_opp = count_windows (grid,mark%2+1,config)
     for i in range(config.inarow):
-        num_opp = count_windows (grid,i+1,mark%2+1,config)
-        if (i==(config.inarow-1) and num_opp >= 1):
+        if (i==(config.inarow-1) and num_opp[i+1] >= 1):
             return float ("-inf")
-        score-= (2**((2*i)+1))*num_opp
+        score-= (2**((2*i)+1))*num_opp[i+1]
     return score
 
-def check_window(window, num_discs, piece, config):
-    return (window.count(piece) == num_discs and window.count(0) == config.inarow-num_discs)
+def check_window(window, piece, config):
+    if window.count((piece%2)+1)==0:
+        return window.count(piece)
+    else:
+        return -1
 
-def count_windows(grid, num_discs, piece, config):
-    num_windows = 0
+def count_windows(grid, piece, config):
+    num_windows = np.zeros(config.inarow+1)
     # horizontal
     for row in range(config.rows):
         for col in range(config.columns-(config.inarow-1)):
             window = list(grid[row, col:col+config.inarow])
-            if check_window(window, num_discs, piece, config):
-                num_windows += 1
+            type_window = check_window(window, piece, config)
+            if type_window != -1:
+                num_windows[type_window] += 1
     # vertical
     for row in range(config.rows-(config.inarow-1)):
         for col in range(config.columns):
             window = list(grid[row:row+config.inarow, col])
-            if check_window(window, num_discs, piece, config):
-                num_windows += 1
+            type_window = check_window(window, piece, config)
+            if type_window != -1:
+                num_windows[type_window] += 1
     # positive diagonal
     for row in range(config.rows-(config.inarow-1)):
         for col in range(config.columns-(config.inarow-1)):
             window = list(grid[range(row, row+config.inarow), range(col, col+config.inarow)])
-            if check_window(window, num_discs, piece, config):
-                num_windows += 1
+            type_window = check_window(window, piece, config)
+            if type_window != -1:
+                num_windows[type_window] += 1
     # negative diagonal
     for row in range(config.inarow-1, config.rows):
         for col in range(config.columns-(config.inarow-1)):
             window = list(grid[range(row, row-config.inarow, -1), range(col, col+config.inarow)])
-            if check_window(window, num_discs, piece, config):
-                num_windows += 1
+            type_window = check_window(window, piece, config)
+            if type_window != -1:
+                num_windows[type_window] += 1
     return num_windows
 def agent(obs, config):
     global max_score
