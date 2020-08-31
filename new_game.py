@@ -44,7 +44,6 @@ def newGame(player_number,player_mode):
     starty = 400 - int((rows/2)*square_size)
     #Creating class for base variables
     config = Dictionary1(rows,columns,inarow,square_size,startx,starty)
-    ret = 1
     if player_mode == 1:
         playervsAI(config)
     if player_mode == 2:
