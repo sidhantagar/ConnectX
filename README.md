@@ -7,7 +7,7 @@ The game has 3 different modes of Player vs Player, Player vs AI and AI vs AI.
 
 ## How to run the game:
 
-1. Install python on your PC.
+1. Install python(Preferably python3) on your PC.
 
 2. Use pip to install numpy pandas and pygame libraries.
 
