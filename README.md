@@ -28,3 +28,11 @@ The game has 3 different modes of Player vs Player, Player vs AI and AI vs AI.
 4. Run Main_Menu.py
 
 P.S: Running the game for the first time may take pygame considerably more time to load the interface.
+
+|  |  |  |
+|--|--|--|
+|Main Menu ![Main Menu](https://github.com/sidhantagar/ConnectX/blob/master/Screenshots/Main%20Menu.JPG)|Editing Menu ![Edit Configuration](https://github.com/sidhantagar/ConnectX/blob/master/Screenshots/Edit%20Menu.JPG)|Game Modes ![Game Modes](https://github.com/sidhantagar/ConnectX/blob/master/Screenshots/Game%20modes.JPG)|
+
+|  |  |
+|--|--|
+|Sample Game play ![Sample Game Play](https://github.com/sidhantagar/ConnectX/blob/master/Screenshots/Game%20play.JPG)|Game End ![Game End](https://github.com/sidhantagar/ConnectX/blob/master/Screenshots/Game%20end.JPG)|
